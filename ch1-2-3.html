@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter Quizzes - Dependable Systems, Reliability Engineering, and Safety Engineering</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .answer {
+      color: green;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .explanation {
+      color: #555;
+      font-style: italic;
+      margin-top: 3px;
+    }
+    button {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chapter Quizzes</h1>
+  <nav>
+    <a href="#chapter10">Chapter 10: Dependable Systems</a>
+    <a href="#chapter11">Chapter 11: Reliability Engineering</a>
+    <a href="#chapter12">Chapter 12: Safety Engineering</a>
+  </nav>
+
+  <!-- Chapter 10: Dependable Systems Quiz -->
+  <section id="chapter10">
+    <h2>Chapter 10 Quiz - Dependable Systems</h2>
+    <div id="quiz_ch10"></div>
+  </section>
+
+  <!-- Chapter 11: Reliability Engineering Quiz -->
+  <section id="chapter11">
+    <h2>Chapter 11 Quiz - Reliability Engineering</h2>
+    <div id="quiz_ch11"></div>
+  </section>
+
+  <!-- Chapter 12: Safety Engineering Quiz -->
+  <section id="chapter12">
+    <h2>Chapter 12 Quiz - Safety Engineering</h2>
+    <div id="quiz_ch12"></div>
+  </section>
+
+  <script>
+    // Toggle answer visibility
+    function showAnswer(chapter, qNum) {
+      var answerDiv = document.getElementById("answer_" + chapter + "_" + qNum);
+      if (answerDiv.style.display === "none") {
+        answerDiv.style.display = "block";
+      } else {
+        answerDiv.style.display = "none";
+      }
+    }
+
+    // Render quiz given an array of questions, container id, and chapter id
+    function renderQuiz(questions, containerId, chapter) {
+      const container = document.getElementById(containerId);
+      questions.forEach((question, index) => {
+        const qNum = index + 1;
+        let questionHTML = `<div class="question">
+          <h3>${qNum}. ${question.q}</h3>`;
+        question.options.forEach(option => {
+          questionHTML += `<p>${option}</p>`;
+        });
+        questionHTML += `<button onclick="showAnswer('${chapter}', ${qNum})">Show Answer</button>
+          <div id="answer_${chapter}_${qNum}" class="answer" style="display: none;">
+            Correct Answer: ${question.answer}
+            <div class="explanation">Explanation: ${question.explanation}</div>
+          </div>
+        </div>`;
+        container.innerHTML += questionHTML;
+      });
+    }
+
+    // Chapter 10: Dependable Systems Questions (30 Questions)
+    const questions_ch10 = [
+      {
+        q: "What is a dependable system?",
+        options: [
+          "A. A system that is fast and efficient",
+          "B. A system that can deliver service that can justifiably be trusted",
+          "C. A system that is inexpensive to build",
+          "D. A system that is easy to use"
+        ],
+        answer: "B",
+        explanation: "A dependable system is one that can be trusted to deliver its service reliably, safely, and securely."
+      },
+      {
+        q: "Which property ensures that a system is ready for use when needed?",
+        options: [
+          "A. Reliability",
+          "B. Safety",
+          "C. Availability",
+          "D. Resilience"
+        ],
+        answer: "C",
+        explanation: "Availability means the system is ready when needed."
+      },
+      {
+        q: "Which property is concerned with the system working correctly over time?",
+        options: [
+          "A. Safety",
+          "B. Reliability",
+          "C. Security",
+          "D. Availability"
+        ],
+        answer: "B",
+        explanation: "Reliability refers to the system performing its functions correctly over time."
+      },
+      {
+        q: "Which dependability property ensures that a system avoids entering harmful states?",
+        options: [
+          "A. Safety",
+          "B. Resilience",
+          "C. Security",
+          "D. Availability"
+        ],
+        answer: "A",
+        explanation: "Safety ensures that the system avoids harmful states."
+      },
+      {
+        q: "Which property protects a system against malicious attacks?",
+        options: [
+          "A. Availability",
+          "B. Reliability",
+          "C. Security",
+          "D. Safety"
+        ],
+        answer: "C",
+        explanation: "Security protects the system against malicious attacks."
+      },
+      {
+        q: "Which property defines a system’s ability to recover from failures?",
+        options: [
+          "A. Reliability",
+          "B. Resilience",
+          "C. Safety",
+          "D. Availability"
+        ],
+        answer: "B",
+        explanation: "Resilience is the ability of a system to recover from failures."
+      },
+      {
+        q: "What does the cost/dependability curve illustrate?",
+        options: [
+          "A. Increased dependability always lowers cost",
+          "B. The trade-off between higher dependability and increased costs",
+          "C. That dependability has no impact on cost",
+          "D. Cost is independent of dependability"
+        ],
+        answer: "B",
+        explanation: "The curve illustrates that increasing dependability often leads to higher costs."
+      },
+      {
+        q: "Why might a company accept a less dependable system?",
+        options: [
+          "A. To reduce failure costs",
+          "B. Due to prohibitively high cost of achieving high dependability",
+          "C. Because dependability is not important",
+          "D. To improve system functionality"
+        ],
+        answer: "B",
+        explanation: "High dependability can be very expensive, so sometimes a compromise is made."
+      },
+      {
+        q: "What is a sociotechnical system?",
+        options: [
+          "A. A system that integrates technology with social and organizational aspects",
+          "B. A system that only includes hardware components",
+          "C. A system that is purely software",
+          "D. A system for social media only"
+        ],
+        answer: "A",
+        explanation: "A sociotechnical system includes both technical components and human/social elements."
+      },
+      {
+        q: "What does redundancy in system design refer to?",
+        options: [
+          "A. Eliminating duplicate components",
+          "B. Duplicating critical components for backup",
+          "C. Simplifying the system architecture",
+          "D. Enhancing system speed"
+        ],
+        answer: "B",
+        explanation: "Redundancy means duplicating components so that if one fails, another can take over."
+      },
+      {
+        q: "What does diversity in system design mean?",
+        options: [
+          "A. Using identical components throughout the system",
+          "B. Employing different methods to achieve the same function",
+          "C. Eliminating redundancy",
+          "D. Standardizing all components"
+        ],
+        answer: "B",
+        explanation: "Diversity means using varied approaches to perform the same function, reducing common mode failures."
+      },
+      {
+        q: "What is a major drawback of using redundancy and diversity?",
+        options: [
+          "A. Increased system simplicity",
+          "B. Lower costs",
+          "C. Increased complexity",
+          "D. Improved performance"
+        ],
+        answer: "C",
+        explanation: "While beneficial, they also increase system complexity."
+      },
+      {
+        q: "What does it mean for a process to be auditable?",
+        options: [
+          "A. It is automated",
+          "B. It can be independently reviewed",
+          "C. It is fast",
+          "D. It is kept secret"
+        ],
+        answer: "B",
+        explanation: "An auditable process can be reviewed by independent parties to ensure standards are met."
+      },
+      {
+        q: "What does a documentable process imply?",
+        options: [
+          "A. The process is clearly recorded and structured",
+          "B. The process is undocumented",
+          "C. Documentation is optional",
+          "D. The process is secret"
+        ],
+        answer: "A",
+        explanation: "A documentable process has clear, recorded documentation."
+      },
+      {
+        q: "What is meant by a robust process?",
+        options: [
+          "A. It can recover from individual process failures",
+          "B. It is the fastest process",
+          "C. It is the cheapest process",
+          "D. It requires no validation"
+        ],
+        answer: "A",
+        explanation: "A robust process is designed to recover when parts of it fail."
+      },
+      {
+        q: "What does a standardized process entail?",
+        options: [
+          "A. A process with no guidelines",
+          "B. A process that follows established standards and best practices",
+          "C. A process that is unique each time",
+          "D. A process that is not repeatable"
+        ],
+        answer: "B",
+        explanation: "Standardized processes adhere to agreed-upon standards."
+      },
+      {
+        q: "On what basis are formal methods built in software development?",
+        options: [
+          "A. User feedback",
+          "B. Mathematical representation and analysis",
+          "C. Trial and error",
+          "D. Market research"
+        ],
+        answer: "B",
+        explanation: "Formal methods use mathematical techniques to model and verify software."
+      },
+      {
+        q: "Which approach is used in verification-based formal methods?",
+        options: [
+          "A. Building code directly from a blueprint",
+          "B. Checking if the program matches its blueprint",
+          "C. User interface testing",
+          "D. Performance benchmarking"
+        ],
+        answer: "B",
+        explanation: "Verification-based methods check the implementation against a formal specification."
+      },
+      {
+        q: "What is a common limitation of formal methods?",
+        options: [
+          "A. They are easy to understand",
+          "B. They require extensive mathematical expertise",
+          "C. They reduce system complexity",
+          "D. They are inexpensive"
+        ],
+        answer: "B",
+        explanation: "Formal methods often require a deep understanding of mathematics."
+      },
+      {
+        q: "How do formal methods typically differ from Agile methods?",
+        options: [
+          "A. They are faster",
+          "B. They require rigorous upfront specification and analysis",
+          "C. They are more flexible",
+          "D. They do not require documentation"
+        ],
+        answer: "B",
+        explanation: "Formal methods involve extensive upfront work compared to the iterative nature of Agile."
+      },
+      {
+        q: "What role does human oversight play in AI-enhanced dependable systems?",
+        options: [
+          "A. It replaces AI entirely",
+          "B. It ensures that AI operates safely",
+          "C. It increases system speed",
+          "D. It reduces dependability"
+        ],
+        answer: "B",
+        explanation: "Human oversight is critical to monitor and intervene when necessary."
+      },
+      {
+        q: "Which dependability property is primarily about system recovery?",
+        options: [
+          "A. Reliability",
+          "B. Resilience",
+          "C. Safety",
+          "D. Security"
+        ],
+        answer: "B",
+        explanation: "Resilience focuses on the system's ability to recover from failures."
+      },
+      {
+        q: "Why is redundancy important in safety‑critical systems?",
+        options: [
+          "A. It decreases cost",
+          "B. It provides backup in case of failure",
+          "C. It simplifies the system",
+          "D. It is unnecessary"
+        ],
+        answer: "B",
+        explanation: "Redundancy ensures that if one component fails, another can take over."
+      },
+      {
+        q: "How do redundancy and diversity complement each other?",
+        options: [
+          "A. They are identical",
+          "B. Redundancy provides backup while diversity offers alternative methods",
+          "C. They cancel each other out",
+          "D. They reduce dependability"
+        ],
+        answer: "B",
+        explanation: "Together, they mitigate the risk of common mode failures."
+      },
+      {
+        q: "What is an example of a redundant component?",
+        options: [
+          "A. A single sensor",
+          "B. Multiple sensors for the same measurement",
+          "C. A unique algorithm",
+          "D. A standalone process"
+        ],
+        answer: "B",
+        explanation: "Using multiple sensors provides redundancy."
+      },
+      {
+        q: "How does formal modeling benefit system dependability?",
+        options: [
+          "A. It reduces cost",
+          "B. It provides a mathematical basis for verification",
+          "C. It simplifies design",
+          "D. It eliminates redundancy"
+        ],
+        answer: "B",
+        explanation: "Formal modeling enables rigorous verification of system behavior."
+      },
+      {
+        q: "Why might dependability be prioritized over detailed functionality?",
+        options: [
+          "A. Because functionality is unimportant",
+          "B. Because trust and safety are critical in many systems",
+          "C. Because dependability is cheaper",
+          "D. Because detailed functionality is irrelevant"
+        ],
+        answer: "B",
+        explanation: "In critical systems, ensuring trustworthiness is paramount."
+      },
+      {
+        q: "Which method is used to verify a system conforms to its design?",
+        options: [
+          "A. Redundancy analysis",
+          "B. Formal verification",
+          "C. User testing",
+          "D. Benchmarking"
+        ],
+        answer: "B",
+        explanation: "Formal verification uses mathematical proofs to check conformance."
+      },
+      {
+        q: "What is the benefit of using diverse verification processes?",
+        options: [
+          "A. They increase failure rates",
+          "B. They reduce testing time",
+          "C. They enhance error detection",
+          "D. They are less reliable"
+        ],
+        answer: "C",
+        explanation: "Diverse methods improve the likelihood of detecting errors."
+      },
+      {
+        q: "Why is dependability often prioritized in critical systems?",
+        options: [
+          "A. Because functionality is secondary",
+          "B. Because trust, safety, and reliability are essential",
+          "C. Because it lowers cost",
+          "D. Because it increases speed"
+        ],
+        answer: "B",
+        explanation: "For critical systems, being dependable is more important than extra features."
+      },
+      {
+        q: "Which approach helps ensure a system meets its blueprint?",
+        options: [
+          "A. Redundancy analysis",
+          "B. Formal verification",
+          "C. Benchmarking",
+          "D. User surveys"
+        ],
+        answer: "B",
+        explanation: "Formal verification provides a rigorous method to confirm design conformance."
+      },
+      {
+        q: "What is the benefit of integrating diverse verification methods?",
+        options: [
+          "A. Increased testing time",
+          "B. Improved error detection",
+          "C. Reduced system performance",
+          "D. Simplified design"
+        ],
+        answer: "B",
+        explanation: "Using diverse methods helps uncover different types of errors."
+      },
+      {
+        q: "What key lesson does Chapter 10 emphasize?",
+        options: [
+          "A. Dependability is optional",
+          "B. High dependability is achieved through integrating redundancy, diversity, and formal methods",
+          "C. Cost is the only important factor",
+          "D. Functionality should be prioritized over safety"
+        ],
+        answer: "B",
+        explanation: "The chapter teaches that combining multiple strategies enhances system dependability."
+      }
+    ];
+
+    // Chapter 11: Reliability Engineering Questions (30 Questions)
+    const questions_ch11 = [
+      {
+        q: "What is reliability engineering?",
+        options: [
+          "A. Ensuring software works correctly when needed",
+          "B. Focusing solely on hardware design",
+          "C. Prioritizing speed over correctness",
+          "D. Eliminating redundancy"
+        ],
+        answer: "A",
+        explanation: "Reliability engineering ensures that software operates correctly under specified conditions."
+      },
+      {
+        q: "Which factor is often the root cause of system failures?",
+        options: [
+          "A. Hardware defects",
+          "B. Software bugs",
+          "C. Human error",
+          "D. Network issues"
+        ],
+        answer: "C",
+        explanation: "Human error is frequently cited as the root of many system failures."
+      },
+      {
+        q: "What does availability refer to in reliability engineering?",
+        options: [
+          "A. Correct operation",
+          "B. System readiness",
+          "C. Security",
+          "D. Safety"
+        ],
+        answer: "B",
+        explanation: "Availability is the measure of a system’s accessibility when required."
+      },
+      {
+        q: "Which metric represents the chance of failure on demand?",
+        options: [
+          "A. ROCOF",
+          "B. POFOD",
+          "C. AVAIL",
+          "D. MTBF"
+        ],
+        answer: "B",
+        explanation: "POFOD stands for Probability of Failure on Demand."
+      },
+      {
+        q: "What does ROCOF measure?",
+        options: [
+          "A. Time between failures",
+          "B. Rate of Occurrence of Failures",
+          "C. System uptime",
+          "D. Failure probability"
+        ],
+        answer: "B",
+        explanation: "ROCOF measures the frequency of failures over time."
+      },
+      {
+        q: "What does the AVAIL metric indicate?",
+        options: [
+          "A. Percentage of time the system is operational",
+          "B. Number of failures per day",
+          "C. Cost of failures",
+          "D. User satisfaction"
+        ],
+        answer: "A",
+        explanation: "AVAIL indicates the system’s uptime as a percentage."
+      },
+      {
+        q: "Which requirement category focuses on validating user inputs?",
+        options: [
+          "A. Recovery",
+          "B. Checking",
+          "C. Redundancy",
+          "D. Process"
+        ],
+        answer: "B",
+        explanation: "Checking requirements involve validating inputs to prevent errors."
+      },
+      {
+        q: "What do recovery requirements ensure?",
+        options: [
+          "A. System shutdown",
+          "B. System restoration after a failure",
+          "C. Input validation",
+          "D. Redundant processes"
+        ],
+        answer: "B",
+        explanation: "Recovery requirements focus on restoring the system and preserving data after a failure."
+      },
+      {
+        q: "What is the purpose of redundancy requirements?",
+        options: [
+          "A. To simplify code",
+          "B. To maintain backup systems",
+          "C. To increase user interaction",
+          "D. To reduce processing time"
+        ],
+        answer: "B",
+        explanation: "Redundancy requirements ensure that backup systems are in place in case of failure."
+      },
+      {
+        q: "How do non-functional requirements differ from functional requirements?",
+        options: [
+          "A. They specify what the system must do",
+          "B. They define how well the system performs",
+          "C. They are the same",
+          "D. They focus solely on the user interface"
+        ],
+        answer: "B",
+        explanation: "Non-functional requirements define performance and quality attributes, whereas functional requirements specify what the system does."
+      },
+      {
+        q: "What is a typical template for writing non-functional requirements?",
+        options: [
+          "A. The system shall do X",
+          "B. The [SYSTEM] shall achieve [METRIC] of [VALUE] under [CONDITIONS]",
+          "C. The system is optional",
+          "D. The user may choose functionalities"
+        ],
+        answer: "B",
+        explanation: "This template outlines measurable performance under specified conditions."
+      },
+      {
+        q: "Which metric is used to specify a system’s uptime?",
+        options: [
+          "A. POFOD",
+          "B. ROCOF",
+          "C. AVAIL",
+          "D. MTTR"
+        ],
+        answer: "C",
+        explanation: "AVAIL represents the percentage of time the system is operational."
+      },
+      {
+        q: "What is a fault-tolerant architecture?",
+        options: [
+          "A. An architecture that does not tolerate any failures",
+          "B. An architecture that continues to operate despite component failures",
+          "C. An architecture that relies on a single system",
+          "D. An architecture that is less reliable"
+        ],
+        answer: "B",
+        explanation: "Fault-tolerant architectures are designed to continue functioning even when parts of the system fail."
+      },
+      {
+        q: "What is N-version programming?",
+        options: [
+          "A. Using a single version of the software",
+          "B. Using multiple independent software versions for the same task",
+          "C. Writing code in multiple languages",
+          "D. Sequential programming"
+        ],
+        answer: "B",
+        explanation: "N-version programming involves developing multiple independent implementations to reduce errors."
+      },
+      {
+        q: "Which best practice is essential for programming for reliability?",
+        options: [
+          "A. Ignoring input validation",
+          "B. Checking all inputs for validity",
+          "C. Avoiding exception handling",
+          "D. Using untested constructs"
+        ],
+        answer: "B",
+        explanation: "Validating inputs is a crucial practice to prevent unexpected behavior."
+      },
+      {
+        q: "Why is it important to limit the visibility of information in a program?",
+        options: [
+          "A. To reduce system complexity",
+          "B. To avoid unintended interactions between components",
+          "C. To increase processing speed",
+          "D. To make code longer"
+        ],
+        answer: "B",
+        explanation: "Limiting visibility helps prevent errors due to unintended interactions."
+      },
+      {
+        q: "What does a fault-tolerant system do when a component fails?",
+        options: [
+          "A. Shuts down immediately",
+          "B. Switches to a backup component",
+          "C. Notifies the user and waits",
+          "D. Ignores the failure"
+        ],
+        answer: "B",
+        explanation: "A fault-tolerant system continues operation by using backup components."
+      },
+      {
+        q: "What is an operational profile in reliability measurement?",
+        options: [
+          "A. A list of system functions",
+          "B. A statistical representation of real-world usage",
+          "C. A design blueprint",
+          "D. A list of failures"
+        ],
+        answer: "B",
+        explanation: "An operational profile represents how the system is used in the real world."
+      },
+      {
+        q: "Why is preparing a test data set important in reliability measurement?",
+        options: [
+          "A. To mimic real-world usage patterns",
+          "B. To confuse the system",
+          "C. To reduce testing",
+          "D. To replace user input"
+        ],
+        answer: "A",
+        explanation: "Test data sets should reflect real-world conditions to accurately assess reliability."
+      },
+      {
+        q: "What does reliability computation involve?",
+        options: [
+          "A. Fault-tree analysis",
+          "B. Counting and logging system failures during testing",
+          "C. Operational profiling",
+          "D. System design"
+        ],
+        answer: "B",
+        explanation: "Reliability computation involves measuring failure rates and time between failures."
+      },
+      {
+        q: "What is the benefit of reliability measurement?",
+        options: [
+          "A. To reduce system functionality",
+          "B. To quantify the system’s failure rates",
+          "C. To increase development time",
+          "D. To simplify the system"
+        ],
+        answer: "B",
+        explanation: "Measuring reliability helps quantify how often a system fails, guiding improvements."
+      },
+      {
+        q: "How does reliability engineering help companies in the AI era?",
+        options: [
+          "A. By eliminating the need for testing",
+          "B. By preventing failures and streamlining operations",
+          "C. By reducing the cost of AI hardware",
+          "D. By increasing system complexity"
+        ],
+        answer: "B",
+        explanation: "Reliability engineering helps prevent failures even as AI systems are integrated."
+      },
+      {
+        q: "Which requirement ensures data preservation during failures?",
+        options: [
+          "A. Checking requirement",
+          "B. Recovery requirement",
+          "C. Redundancy requirement",
+          "D. Process requirement"
+        ],
+        answer: "B",
+        explanation: "Recovery requirements focus on restoring the system and preserving data."
+      },
+      {
+        q: "What is the primary goal of writing functional reliability requirements?",
+        options: [
+          "A. To define user interactions",
+          "B. To specify how the system recovers from failures",
+          "C. To set performance metrics",
+          "D. To define what the system must do reliably"
+        ],
+        answer: "D",
+        explanation: "Functional requirements specify the reliable functions the system must perform."
+      },
+      {
+        q: "Which metric would you use to specify a system's failure frequency?",
+        options: [
+          "A. POFOD",
+          "B. AVAIL",
+          "C. ROCOF",
+          "D. MTBF"
+        ],
+        answer: "C",
+        explanation: "ROCOF measures the rate at which failures occur."
+      },
+      {
+        q: "What is the main focus of reliability engineering?",
+        options: [
+          "A. Designing for speed",
+          "B. Ensuring correct system operation under defined conditions",
+          "C. Reducing user interaction",
+          "D. Maximizing cost efficiency"
+        ],
+        answer: "B",
+        explanation: "Reliability engineering ensures that the system operates correctly under expected conditions."
+      },
+      {
+        q: "Why is prevention considered cheaper than fixing in reliability engineering?",
+        options: [
+          "A. Because fixes are inexpensive",
+          "B. Because preventing failures reduces the incidence of costly repairs",
+          "C. Because prevention is easier to implement",
+          "D. Because failures rarely occur"
+        ],
+        answer: "B",
+        explanation: "Preventing failures typically costs less than repairing them after they occur."
+      },
+      {
+        q: "What role does quality assurance play in reliability engineering?",
+        options: [
+          "A. It is not important",
+          "B. It ensures that development standards are met",
+          "C. It increases system failures",
+          "D. It is only used in hardware"
+        ],
+        answer: "B",
+        explanation: "Quality assurance ensures that the processes meet the required standards, contributing to overall reliability."
+      },
+      {
+        q: "Which of the following is an example of a checking requirement?",
+        options: [
+          "A. System restoration",
+          "B. Input validation",
+          "C. Data replication",
+          "D. Quality assurance"
+        ],
+        answer: "B",
+        explanation: "Input validation is a typical example of a checking requirement."
+      },
+      {
+        q: "What is the key lesson from Chapter 11 on reliability engineering?",
+        options: [
+          "A. Reliability is not important",
+          "B. Functional and non-functional reliability requirements and metrics are essential for system dependability",
+          "C. Hardware is more important than software",
+          "D. Failures cannot be predicted"
+        ],
+        answer: "B",
+        explanation: "The chapter emphasizes that measurable reliability requirements are vital for dependable systems."
+      }
+    ];
+
+    // Chapter 12: Safety Engineering Questions (30 Questions)
+    const questions_ch12 = [
+      {
+        q: "What defines a safety-critical system?",
+        options: [
+          "A. A system where failure causes inconvenience",
+          "B. A system where failure can cause injury, death, or environmental damage",
+          "C. A system that is fast",
+          "D. A system that is cost-effective"
+        ],
+        answer: "B",
+        explanation: "Safety-critical systems have severe consequences if they fail."
+      },
+      {
+        q: "What is the primary focus of safety engineering?",
+        options: [
+          "A. Improving system speed",
+          "B. Designing systems to avoid hazards and ensure safety",
+          "C. Reducing cost",
+          "D. Enhancing aesthetics"
+        ],
+        answer: "B",
+        explanation: "Safety engineering focuses on designing systems to be safe."
+      },
+      {
+        q: "Which of the following is a safety requirement?",
+        options: [
+          "A. The system shall be user-friendly",
+          "B. The system shall not cause hazardous conditions",
+          "C. The system shall be low cost",
+          "D. The system shall operate quickly"
+        ],
+        answer: "B",
+        explanation: "Safety requirements define constraints to prevent hazardous conditions."
+      },
+      {
+        q: "What is a hazard in safety engineering?",
+        options: [
+          "A. A beneficial condition",
+          "B. A potential source of harm",
+          "C. A cost-saving measure",
+          "D. An aesthetic feature"
+        ],
+        answer: "B",
+        explanation: "A hazard is a condition with the potential to cause harm."
+      },
+      {
+        q: "How is risk defined in safety engineering?",
+        options: [
+          "A. As the probability of system success",
+          "B. As a measure of the likelihood and severity of harm",
+          "C. As the total cost of the system",
+          "D. As the time to recover from failure"
+        ],
+        answer: "B",
+        explanation: "Risk considers both the likelihood of an event and its potential severity."
+      },
+      {
+        q: "What does hazard severity refer to?",
+        options: [
+          "A. The likelihood of an accident",
+          "B. The worst possible outcome of a hazard",
+          "C. The cost of mitigation",
+          "D. The speed of system response"
+        ],
+        answer: "B",
+        explanation: "Hazard severity assesses the worst-case consequences of a hazard."
+      },
+      {
+        q: "What does hazard probability measure?",
+        options: [
+          "A. The frequency of a hazard occurring",
+          "B. The severity of the hazard",
+          "C. The cost impact",
+          "D. The recovery time"
+        ],
+        answer: "A",
+        explanation: "Hazard probability measures how likely it is for a hazard to occur."
+      },
+      {
+        q: "What is fault‑tree analysis?",
+        options: [
+          "A. A bottom‑up approach",
+          "B. A top‑down deduction method to identify causes of hazards",
+          "C. A method for reducing costs",
+          "D. An input validation technique"
+        ],
+        answer: "B",
+        explanation: "Fault‑tree analysis is a top‑down method for identifying the root causes of hazards."
+      },
+      {
+        q: "Which of the following is an example of a safety requirement?",
+        options: [
+          "A. The system shall process data in less than 2 seconds",
+          "B. The system shall not deliver an unsafe dose of medication",
+          "C. The system shall be aesthetically pleasing",
+          "D. The system shall be user‑friendly"
+        ],
+        answer: "B",
+        explanation: "Safety requirements focus on preventing harm, such as delivering unsafe doses."
+      },
+      {
+        q: "What is a safety case?",
+        options: [
+          "A. A document detailing system aesthetics",
+          "B. A structured argument with evidence that a system is safe",
+          "C. A cost analysis report",
+          "D. A user manual"
+        ],
+        answer: "B",
+        explanation: "A safety case provides structured evidence that a system meets safety requirements."
+      },
+      {
+        q: "Which element is NOT typically part of a safety case?",
+        options: [
+          "A. Hazard analysis results",
+          "B. Process documentation",
+          "C. User interface design",
+          "D. Verification and validation results"
+        ],
+        answer: "C",
+        explanation: "User interface design is generally not a part of a safety case."
+      },
+      {
+        q: "What is the goal of safety assurance processes?",
+        options: [
+          "A. To enhance system speed",
+          "B. To check that the system will operate safely",
+          "C. To reduce cost",
+          "D. To increase complexity"
+        ],
+        answer: "B",
+        explanation: "Safety assurance processes are intended to verify that a system is safe for use."
+      },
+      {
+        q: "What does formal verification in safety engineering involve?",
+        options: [
+          "A. Mathematical proofs that specifications are met",
+          "B. User testing",
+          "C. Performance benchmarking",
+          "D. Cost reduction"
+        ],
+        answer: "A",
+        explanation: "Formal verification uses mathematical methods to prove that a system meets its safety specifications."
+      },
+      {
+        q: "Which technique involves exhaustively exploring a system model for safety property violations?",
+        options: [
+          "A. Static program analysis",
+          "B. Model checking",
+          "C. User surveys",
+          "D. Fault‑tree analysis"
+        ],
+        answer: "B",
+        explanation: "Model checking explores all possible states of a system model to ensure safety properties hold."
+      },
+      {
+        q: "What is static program analysis used for in safety engineering?",
+        options: [
+          "A. Running the code",
+          "B. Examining source code for potential errors without execution",
+          "C. Creating user manuals",
+          "D. Enhancing performance"
+        ],
+        answer: "B",
+        explanation: "Static analysis examines code for faults without actually running it."
+      },
+      {
+        q: "What does the safety assurance process generate for regulatory compliance?",
+        options: [
+          "A. Marketing materials",
+          "B. Documentation for traceability",
+          "C. User interface designs",
+          "D. Software prototypes"
+        ],
+        answer: "B",
+        explanation: "Safety assurance produces documentation required for regulatory traceability."
+      },
+      {
+        q: "What is the significance of redundancy in safety‑critical systems?",
+        options: [
+          "A. It increases cost without benefits",
+          "B. It provides backup to prevent hazards",
+          "C. It simplifies design",
+          "D. It is not relevant"
+        ],
+        answer: "B",
+        explanation: "Redundancy ensures that if one component fails, a backup is available to maintain safety."
+      },
+      {
+        q: "How can safety engineering processes prevent hazards?",
+        options: [
+          "A. By ignoring potential failure modes",
+          "B. By systematically identifying and mitigating hazards",
+          "C. By reducing system functionality",
+          "D. By eliminating documentation"
+        ],
+        answer: "B",
+        explanation: "A systematic approach in safety engineering identifies hazards and implements measures to mitigate them."
+      },
+      {
+        q: "What is the purpose of a structured argument in a safety case?",
+        options: [
+          "A. To confuse reviewers",
+          "B. To link evidence to safety claims",
+          "C. To reduce the need for testing",
+          "D. To document user preferences"
+        ],
+        answer: "B",
+        explanation: "Structured arguments connect evidence with safety claims to justify that a system is safe."
+      },
+      {
+        q: "What is a common cause of software hazards in safety‑critical systems?",
+        options: [
+          "A. Algorithm errors",
+          "B. User interface colors",
+          "C. Network latency",
+          "D. Hardware design aesthetics"
+        ],
+        answer: "A",
+        explanation: "Errors in algorithms or arithmetic can lead to hazardous outcomes in safety‑critical systems."
+      },
+      {
+        q: "What does 'shall not' in safety requirements imply?",
+        options: [
+          "A. An optional guideline",
+          "B. A mandatory prohibition",
+          "C. A suggestion",
+          "D. A performance metric"
+        ],
+        answer: "B",
+        explanation: "'Shall not' indicates something that must be strictly avoided."
+      },
+      {
+        q: "How are hazards typically reduced in safety engineering?",
+        options: [
+          "A. By ignoring them",
+          "B. By specifying safety requirements",
+          "C. By increasing system speed",
+          "D. By reducing system functionality"
+        ],
+        answer: "B",
+        explanation: "Hazards are reduced through clear, enforceable safety requirements."
+      },
+      {
+        q: "What is the role of independent safety reviews?",
+        options: [
+          "A. To add cost",
+          "B. To provide an unbiased evaluation of system safety",
+          "C. To design the system",
+          "D. To market the product"
+        ],
+        answer: "B",
+        explanation: "Independent reviews offer an objective assessment of a system’s safety."
+      },
+      {
+        q: "What is a key component of safety engineering in the AI era?",
+        options: [
+          "A. Eliminating human oversight",
+          "B. Automated hazard identification and real‑time monitoring",
+          "C. Reducing testing",
+          "D. Increasing system complexity"
+        ],
+        answer: "B",
+        explanation: "AI can assist in automatically identifying hazards and monitoring system safety in real‑time."
+      },
+      {
+        q: "Why is human factors analysis important in safety engineering?",
+        options: [
+          "A. To increase aesthetic appeal",
+          "B. To understand how human errors contribute to hazards",
+          "C. To reduce cost",
+          "D. To enhance software speed"
+        ],
+        answer: "B",
+        explanation: "Analyzing human factors helps prevent errors and mitigate hazards."
+      },
+      {
+        q: "Which analysis method uses a top‑down approach to identify hazard causes?",
+        options: [
+          "A. Fault‑tree analysis",
+          "B. Statistical analysis",
+          "C. User testing",
+          "D. Benchmarking"
+        ],
+        answer: "A",
+        explanation: "Fault‑tree analysis uses a top‑down method to deduce the causes of hazards."
+      },
+      {
+        q: "What does the safety engineering process aim to achieve?",
+        options: [
+          "A. Enhanced system aesthetics",
+          "B. Elimination of hazards that can cause injury or environmental damage",
+          "C. Increased system cost",
+          "D. Faster performance"
+        ],
+        answer: "B",
+        explanation: "Safety engineering is focused on designing systems that avoid hazardous outcomes."
+      },
+      {
+        q: "What is one challenge in safety measurement?",
+        options: [
+          "A. Generating comprehensive test data",
+          "B. Increasing failure rates",
+          "C. Simplifying design",
+          "D. Reducing system speed"
+        ],
+        answer: "A",
+        explanation: "Collecting test data that accurately reflects all possible hazard scenarios can be challenging."
+      },
+      {
+        q: "How does the safety case support regulatory compliance?",
+        options: [
+          "A. By providing evidence of safety through structured arguments",
+          "B. By reducing documentation",
+          "C. By focusing on aesthetics",
+          "D. By ignoring hazards"
+        ],
+        answer: "A",
+        explanation: "A well‑structured safety case presents evidence that the system meets safety standards."
+      },
+      {
+        q: "What is the key lesson from Chapter 12 on safety engineering?",
+        options: [
+          "A. Safety is an afterthought",
+          "B. Designing safety into safety‑critical systems is essential to prevent harm",
+          "C. Cost reduction is the main goal",
+          "D. User interface design is most important"
+        ],
+        answer: "B",
+        explanation: "The chapter emphasizes that designing robust safety measures is vital for preventing harm in critical systems."
+      }
+    ];
+
+    // Render quizzes for each chapter
+    renderQuiz(questions_ch10, 'quiz_ch10', 'ch10');
+    renderQuiz(questions_ch11, 'quiz_ch11', 'ch11');
+    renderQuiz(questions_ch12, 'quiz_ch12', 'ch12');
+  </script>
+</body>
+</html>
